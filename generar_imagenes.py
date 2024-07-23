@@ -1,11 +1,11 @@
 import random
 import struct
 import os
+import zlib
 
 # Función para calcular el CRC (Cyclic Redundancy Check)
 def crc32(data):
-    from zlib import crc32
-    return crc32(data) & 0xffffffff
+    return zlib.crc32(data) & 0xffffffff
 
 # Cabecera PNG estándar
 png_header = bytearray([
@@ -40,12 +40,15 @@ for i in range(1, 21):
     # Generar contenido aleatorio
     random_content = bytearray(random.getrandbits(8) for _ in range(width * height * 3))  # 3 bytes por píxel (RGB)
 
-    # IDAT chunk (simplificado, normalmente se comprime)
-    idat_length = struct.pack(">I", len(random_content))
-    idat_type = b'IDAT'
-    idat_crc = struct.pack(">I", crc32(idat_type + random_content))
+    # Comprimir el contenido aleatorio
+    compressed_content = zlib.compress(random_content)
 
-    idat_chunk = idat_length + idat_type + random_content + idat_crc
+    # IDAT chunk
+    idat_length = struct.pack(">I", len(compressed_content))
+    idat_type = b'IDAT'
+    idat_crc = struct.pack(">I", crc32(idat_type + compressed_content))
+
+    idat_chunk = idat_length + idat_type + compressed_content + idat_crc
 
     # Combinar todos los chunks
     png_data = png_header + ihdr_chunk + idat_chunk + iend_chunk
