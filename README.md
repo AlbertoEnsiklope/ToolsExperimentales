@@ -1,6 +1,6 @@
 ## Automatización Pro (Ameeego)
 ```
-cd && curl -o crearAmigo.sh https://raw.githubusercontent.com/AlbertoEnsiklope/ToolsExperimentales/main/crearAmigo.sh && sudo chmod +x crearAmigo.sh && sudo sh ./crearAmigo.sh
+curl -o crearAmigo.sh https://raw.githubusercontent.com/AlbertoEnsiklope/ToolsExperimentales/main/crearAmigo.sh && sudo chmod +x crearAmigo.sh && sudo sh ./crearAmigo.sh
 ```
 
 ## Generar imgs
