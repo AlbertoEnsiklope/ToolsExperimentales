@@ -1,6 +1,6 @@
 ## Iniciar el Colabo (XFCE4 ubuntu, Debian)
 ```
-curl -o crearAmigo.sh https://raw.githubusercontent.com/AlbertoEnsiklope/ToolsExperimentales/main/iniciarXFCE4.py && python iniciarXFCE4.py
+curl -o iniciarXFCE4.py https://raw.githubusercontent.com/AlbertoEnsiklope/ToolsExperimentales/main/iniciarXFCE4.py && python iniciarXFCE4.py
 ```
 
 ## Automatización Pro (Ameeego)
